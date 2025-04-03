@@ -50,7 +50,7 @@ section{
 
 section span{
     /* padding: 5px; */
-    display: inline;
+    display: block;
     margin: 5px ;   
 
 }
@@ -58,20 +58,31 @@ section span{
 p ~ img{
     border-radius: 5px;
     width: 25px;
+    display: block;
 }
 
 img{
     border-radius: 5px;
-    width: 100px;
+    width: 150px;
     margin: 5px;
-    display: inline-block;
+    float: left;
 }
 
-h2 + p{
+/* h2 + p{
     display: inline;
-}
+} */
 
 h2 div + img{
-    display: inline-block;
+    /* display: inline-block; */
     margin-left: 10px;
+}
+/* Apply different font sizes to headings and paragraphs. */
+h2 {
+    font-size: 50px;
+    color: midnightblue;
+}
+
+p{
+    font-size: 20px;
+    color: darkslategrey;
 }
