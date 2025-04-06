@@ -29,16 +29,21 @@ console.log(hmmGreatInstructorAndStudents);
 console.log(yeahNoBadEnergyHere);
 
 
-// console.log(firstIntroToTheWorld);
-// console.log(firstIntroToTheClass);
-// console.log(myFavouriteSongNowIs);
-// console.log(myGreatBackendInstructorIs);
-// console.log(andTheReasonBeingThat);
+console.log(firstIntroToTheWorld);
+console.log(firstIntroToTheClass);
+console.log(myFavouriteSongNowIs);
+console.log(myGreatBackendInstructorIs);
+console.log(andTheReasonBeingThat);
 
-// console.log(myFavouriteNumberNowIs);
-// console.log(numberIAmAimingFor);
-// console.log(wordAttitudeSumsUpTo);
-// console.log(numbersInTheAlphabetAre);
-// console.log(theySayILoveYou);
+console.log(myFavouriteNumberNowIs);
+console.log(numberIAmAimingFor);
+console.log(wordAttitudeSumsUpTo);
+console.log(numbersInTheAlphabetAre);
+console.log(theySayILoveYou);
+
+const myName = " Oluwatosin ";
+
+console.log(myName.toLocaleUpperCase());
+
 
 
