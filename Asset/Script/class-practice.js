@@ -29,14 +29,29 @@ console.log(hmmGreatInstructorAndStudents);
 console.log(yeahNoBadEnergyHere);
 
 
-// console.log(firstIntroToTheWorld);
-// console.log(firstIntroToTheClass);
-// console.log(myFavouriteSongNowIs);
-// console.log(myGreatBackendInstructorIs);
-// console.log(andTheReasonBeingThat);
+console.log(firstIntroToTheWorld);
+console.log(firstIntroToTheClass);
+console.log(myFavouriteSongNowIs);
+console.log(myGreatBackendInstructorIs);
+console.log(andTheReasonBeingThat);
 
+console.log(myFavouriteNumberNowIs);
+console.log(numberIAmAimingFor);
+console.log(wordAttitudeSumsUpTo);
+console.log(numbersInTheAlphabetAre);
+console.log(theySayILoveYou);
+
+const myName = " Oluwatosin ";
+
+console.log(myName.toLocaleUpperCase());
+
+<<<<<<< HEAD
 // console.log(myFavouriteNumberNowIs);
 // console.log(numberIAmAimingFor);
 // console.log(wordAttitudeSumsUpTo);
 // console.log(numbersInTheAlphabetAre);
 // console.log(theySayILoveYou);
+=======
+
+
+>>>>>>> d00fc1a45bef7c40bb0764fddad8bceb6e85a428
