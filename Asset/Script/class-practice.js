@@ -40,5 +40,3 @@ console.log(yeahNoBadEnergyHere);
 // console.log(wordAttitudeSumsUpTo);
 // console.log(numbersInTheAlphabetAre);
 // console.log(theySayILoveYou);
-
-
