@@ -61,8 +61,13 @@ console.log(" ");
 // let join = reverse.join("");
 // console.log(join);
 
+//The word to be reversed
 let revWord = "Racecar"
+
+// The logic behind the reversing of the word
 let output = revWord.split("").reverse("").join("")
+
+// The output of the word in reverse order
 console.log(output);
 console.log(" ");
 
@@ -70,14 +75,17 @@ console.log(" ");
 // 4.Store the price of 3 items in 3 different variables. Calculate the total and display it with a message.
 
 //My wishlist items
+//The price of the items on my wishlist
 laptop = 750000;
 smartPhone = 350000;
 miscExp = 1000000;
 
 // The addition of  total on my wishlist
+//The total price of the items on my wishlist
 wishTotal = laptop + smartPhone + miscExp;
 
 // The output of the item's total on my wishlist
+//The total money needed to buy the items on my wishlist
 console.log("The total money needed is about " + wishTotal + " to buy the items on my wishlist") //ES5
 console.log(" ");
 
@@ -87,6 +95,7 @@ console.log(" ");
 // 5.Find the average of 5 test scores stored in variables. Display the average with a message.
 
 //The list of 5  test scores
+//The test scores of the Backend Developer
 mathTestScore = 75;
 englishTestScore = 85;
 accountTestScore = 80;
@@ -94,6 +103,7 @@ infoTechTestScore = 100;
 biologyTestScore = 70;
 
 //The average of the Test Scores
+//The average test score of the Backend Developer
 averageTestScore = (mathTestScore + englishTestScore + accountTestScore + infoTechTestScore + biologyTestScore) / 5
 
 // The output of the average test's score
