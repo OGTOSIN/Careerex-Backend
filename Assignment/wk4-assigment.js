@@ -128,7 +128,7 @@ const checkPass = (mathScore, englishScore) => {
     (mathScore >= 50 && englishScore >= 50) ? console.log("Yes") : console.log("No");
 };
 
-checkPass(50, 50); // Call the function with two scores to detrmine if the student passed both subjects
+checkPass(50, 50); // Call the function with two scores to determine if the student passed both subjects
 
 
 
