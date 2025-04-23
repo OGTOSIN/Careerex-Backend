@@ -1,4 +1,4 @@
-// //Assignment Instructions
+// Assignment Instructions
 // Assigned
 
 // Instructions:
@@ -483,3 +483,7 @@ drugs.forEach( (drug) => {
 //The output of the number of drugs that are Analgesics
 console.log(analgesicDrugs); 
 console.log(" ");
+
+
+//Give me a great commit for this file
+    //"Completed the assignment for week 5 on Higher Array Methods with all the required tasks and functions implemented successfully."
