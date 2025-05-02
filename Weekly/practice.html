@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Practice</title>
+    </head>
+    <body>
+        <section> 
+            <h3>
+            Explanation of the .forEach(), .map(), .filter(), and .filter() and
+            .map(),
+            </h3>
+
+            <pre>
+    const books = 
+
+    [
+        {
+            id: 1,
+            title: "To Kill a Mockingbird",
+            author: "Harper Lee",
+            genre: "Fiction",
+            price: 15.99,
+            isBestSeller: true,
+            stock: 50,
+        },
+        {
+            id: 2,
+            title: "The Great Gatsby",
+            author: "F. Scott Fitzgeraly",
+            genre: "Fiction",
+            price: 12.99,
+            isBestSeller: false,
+            stock: 30,
+        }
+
+    ];
+            </pre>
+    
+            <h5>.forEach()</h5>
+            <p>
+                The .forEach() method does not create a new array with the result of the
+                call back function - it basically logs the result of the condition(s) you
+                set there (Performs the specified action for each element in an array).
+            </p>
+
+            <pre>
+    books.forEach((book) => {
+
+        if (book.title.endsWith("s")) {
+
+            console.log(book.title + "'");
+
+        } else if (!book.title.endsWith("s")) {
+
+            console.log(book.title + "s"); 
+
+            }  else {
+
+            console.log(book.title);
+            
+        };
+        });
+            </pre>
+        
+            <h5>.map()</h5>
+            <p>
+                The .map() method create a new array with the result of the call back
+                function - or basically the result of the condition you set for it to
+                return(Calls a defined callback function on each element of an array, 
+                and returns an array that contains the results).
+            </p>
+        
+            <h5>.filter()</h5>
+            <p>
+                The .filter() method does not create a new array with the result of the call back
+                function - it basically return the result of the condition you set
+                (Returns the elements of an array that meet the condition specified in a callback function.). 
+            </p>
+        
+            <h5>.map()</h5>
+            <p>
+                The .map() method create a new array with the result of the call back
+                function - or basically the result of the condition you set for it to
+                return
+            </p>
+        </section>
+    
+        <section>
+            <h4>Other Learnings:</h4>
+            <h5>.some(), and .endsWith()</h3>
+            <p>
+                The .some() method looks through an array for items and shows result based 
+                on the condtions based set on the with the result of the call back
+                function - or basically the result of the condition you set for it to
+                return
+            </p>
+
+            <pre>
+    const catBooks =
+
+    {
+        id: 3, <a href="#1">//*1: this id</a>
+        title: "The Faulty Stars",
+        author: "John Grin",
+        genre: "Sci-Fi",
+        price: 49.99,
+        isBestSeller: true,
+        stock: 25
+    }
+
+                                <span id="#1">//*1: id here below</span>
+if (!books.some((book) => book.id === catBooks.id)) {
+
+  books.push(catBooks);
+
+} else {
+
+  console.log("id already exist - catBooks wasn't added");
+
+};
+
+console.log(books);
+            </pre>
+
+
+            <p>
+                The .map() method create a new array with the result of the call back
+                function - or basically the result of the condition you set for it to
+                return
+            </p>
+            <p>
+                The .map() method create a new array with the result of the call back
+                function - or basically the result of the condition you set for it to
+                return
+            </p>
+        </section>
+        
+            <script src="./practice.js"></script>
+    </body>
+</html>

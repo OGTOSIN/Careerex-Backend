@@ -1,31 +1,14 @@
-// Week 5 - Assignment Instructions
-// Assigned
+const express = require("express");
 
-// Instructions:
+const app = express();
 
-// Copy the array below and paste it into your JavaScript assignment file.
+app.use(express.json());
 
-// You will use this array to answer all the questions that follow.
+const PORT = process.env.PORT || 6100;
 
-// Use JavaScript concepts we've learned in class:
-
-// map()
-
-// filter()
-
-// forEach()
-
-// if/else statements
-
-// comparison operators (==, ===)
-
-// functions
-
-// ! (negation)
-
-// When you're done:
-
-// Push your file to GitHub and share the GitHub repository URL
+app.listen(PORT, () => {
+  console.log(`Server is currently running on port: ${PORT}`);
+});
 
 const drugs = [
   {
@@ -229,88 +212,106 @@ const drugs = [
   },
 ];
 
-// 1. Get all drugs that are antibiotics.
+app.get("/", (req, res) => {
+  res.json("Welcome to Week 6 Assignment Server");
+});
 
-console.log("1. ");
-console.log(" ");
 
-//A filter and map method is used to loop through the drugs array and return the name of the drugs that are antibiotics.
-// getAntibDrugs = drugs.filter((drug) => {
-//     if (drug.category === "Antibiotic") {
-//         return drug.name;
-//     };
-// }).map( (drug) => {
-//     return drug.name
-// })
 
-// console.log(" ");
-// console.log(getAntibDrugs);
-// console.log(" ");
+// 1. GET /drugs/antibiotics
+
+// Return all drugs where category is "Antibiotic".
 
 const getAntibDrugs = drugs
 
-  .filter((drug) => drug.category === "Analgesic")
+  .filter((drug) => drug.category === "Antibiotic")
   .map((drug) => drug.name);
 
-console.log(" ");
-console.log(getAntibDrugs);
-console.log(" ");
+app.get("/drugs/antibiotics", (req, res) => {
+  const result = getAntibDrugs;
+  res.json(result);
+});
 
-// 2. Return an array of drug names in lowercase.
 
-console.log("2. ");
-console.log(" ");
 
-// The map method is used to create a new array with the drug names in lowercase.
-const arrayedDrugs = drugs.map((drug) => drug.name.toLowerCase());
+// 2.GET /drugs/names
 
-// The output of the drug names in lowercase
-console.log(arrayedDrugs);
-console.log(" ");
+// Return an array of all drug names converted to lowercase.
 
-// 3. Write a function that accepts a category and returns all drugs under that category.
+const getDrugsName = drugs.map((drug) => {
+  return drug.name.toLowerCase();
+});
 
-console.log("3. ");
-console.log(" ");
+app.get("/drugs/names", (req, res) => {
+  const result = getDrugsName;
 
-//A function that accepts a category and returns all drugs under that category.
+  res.json(result);
+});
+
+
+
+// 3.POST /drugs/by-category
+
+// Accept a category in the body and return all drugs under that category.
+// Example body: { "category": "Antibiotic" }
+
+// A function that accepts a category and returns all drugs under that category.
 const categoriesDrugFinder = (category) => {
   return drugs
-
-    .filter((drug) => drug.category === category) //The filtered return of the drug names that are under the category
-    .map((drug) => drug.name); //The mapped return of the drug names that are under the category
+    .filter((drug) => drug.category === category) // Filter drugs by category
+    .map((drug) => drug.name); // Map to drug names
 };
 
-const result = categoriesDrugFinder("Antimalarial");
+// Get a list of all valid categories
+const validCategories = [...new Set(drugs.map((drug) => drug.category))];
 
-//The output of the drug names that are under the category
-console.log(result);
-console.log(" ");
+app.post("/drugs/by-category", (req, res) => {
+  const category = req.body.category;
 
-// 4. Log each drug’s name and its manufacturer.
+  // Validate that the category is provided
+  if (!category) {
+    return res.status(400).json({ error: "Category is required" });
+  }
 
-console.log("4. ");
-console.log(" ");
+  // Validate that the category is valid
+  if (!validCategories.includes(category)) {
+    return res.status(400).json({ error: "Invalid category provided" });
+  }
 
-// A forEach method is used to loop through the drugs array and return the name of the drugs and their manufacturer.
-drugs.map(
-  (drug) =>
-    console.log(`Name: ${drug.name} (Manufacturer: ${drug.manufacturer})`) //The output of the drug names and their manufacturer
+  // Get the drugs for the given category
+  const result = categoriesDrugFinder(category);
+
+  // Handle case where no drugs are found
+  if (!result || result.length === 0) {
+    return res
+      .status(404)
+      .json({ message: "No drugs found for the given category" });
+  }
+
+  // Send the result
+  res.json(result);
+});
+
+
+
+// 4.GET /drugs/names-manufacturers
+
+// Return an array of objects showing each drug’s name and manufacturer.
+
+const allDrugs = drugs.map(
+  (drug) => `Name: ${drug.name} (Manufacturer: ${drug.manufacturer})` //The output of the drug names and their manufacturer
 );
 
-console.log(" ");
+app.get("/drugs/names-manufacturers", (req, res) => {
+  const result = allDrugs;
+  res.json(result);
+});
 
-// allDrugs = drugs.map(
-//   (drug) => `Name: ${drug.name} (Manufacturer: ${drug.manufacturer})` //The output of the drug names and their manufacturer
-// );
 
-//   console.log(allDrugs);
-//   console.log(" ");
 
-// 5. Return all drugs that require a prescription.
+// 5.GET /drugs/prescription
 
-console.log("5. ");
-console.log(" ");
+// Return all drugs where isPrescriptionOnly is true.
 
 //A filter and map method can be used to get the name of the drugs that are prescription only.
 const filteredDrugs = drugs
@@ -318,28 +319,32 @@ const filteredDrugs = drugs
   .filter((drug) => drug.isPrescriptionOnly == true)
   .map((drug) => drug.name);
 
-//The output of the drug names that are prescription only
-console.log(filteredDrugs);
-console.log(" ");
+app.get("/drugs/prescription", (req, res) => {
+  const result = filteredDrugs;
+  res.json(result);
+});
 
-// // 6. Return a new array, each item should follow the format: "Drug: [name] - [dosageMg]mg".
 
-console.log("6. ");
-console.log(" ");
 
-//A map method is used to create a new array with the drug names and their dosage in mg.
+// 6. GET /drugs/formatted
+
+// Return a new array where each item is a string like:
+// "Drug: [name] - [dosageMg]mg"
+
 const formatDrugs = drugs.map(
   (drug) => `Drug: [${drug.name}] - [${drug.dosageMg}]mg `
 );
 
-//The output of the drug names and their dosage in mg
-console.log(formatDrugs);
-console.log(" ");
+app.get("/drugs/formatted", (req, res) => {
+  const result = formatDrugs;
+  res.json(result);
+});
 
-// 7. Write a function that returns all drugs with a stock less than 50.
 
-console.log("7. ");
-console.log(" ");
+
+// 7.GET /drugs/low-stock
+
+// Return all drugs where stock is less than 50.
 
 //A function that returns all drugs with a stock less than 50.
 const drugStock = (reorderLevel) => {
@@ -349,17 +354,17 @@ const drugStock = (reorderLevel) => {
     .map((drug) => drug.name);
 };
 
-//The function is called with a reorder level of 50.
-//The output of the drug names that are under the reorder level
-console.log(drugStock(50));
-console.log(" ");
+app.get("/drugs/low-stock", (req, res) => {
+  const result = drugStock(50);
+  res.json(result);
+});
 
-// 8. Return all drugs that are not prescription-only.
 
-console.log("8. ");
-console.log(" ");
 
-//A filter and map method can be used to get the name of the drugs that are not prescription only.
+// 8.GET /drugs/non-prescription
+
+// Return all drugs where isPrescriptionOnly is false.
+
 const nonPDrugs = drugs
 
   .filter(
@@ -373,14 +378,17 @@ const nonPDrugs = drugs
       drug.name
   );
 
-//The output of the drug names that are not prescription only
-console.log(nonPDrugs);
-console.log(" ");
+app.get("/drugs/non-prescription", (req, res) => {
+  const result = nonPDrugs;
+  res.json(result);
+});
 
-// 9. Write a function that takes a manufacturer name and returns how many drugs are from that company.
 
-console.log("9. ");
-console.log(" ");
+
+// 9.POST /drugs/manufacturer-count
+
+// Accept a manufacturer in the body and return how many drugs are produced by that manufacturer.
+// Example body: { "manufacturer": "Pfizer" }
 
 //A function that takes a manufacturer name and returns how many drugs are from that company
 const manufacturerCount = (manufacturer) => {
@@ -393,33 +401,31 @@ const manufacturerCount = (manufacturer) => {
   });
 
   //The output of the number of drugs that are from the manufacturer
-  return `The number of drugs from ${manufacturer} is ${count}.`;
+  return count;
 };
 
-console.log(manufacturerCount("Nature’s Bounty"));
-console.log(" ");
-
-// companyDrugs = drugs.map( (drug) => drug.manufacturer === manufacturer ? count++ : !drugs);
-
-// 10. Use forEach() to count how many drugs are Analgesics.
-
-console.log("10. ");
-console.log(" ");
-
-//A forEach method is used to loop through the drugs array and count the number of drugs that are Analgesics.
-
-let analgesicDrugs = 0;
-
-drugs.forEach( (drug) => {
-
-    if (drug.category === "Analgesic"){
-
-        analgesicDrugs++
-
-    };
-
+app.post("/drugs/manufacturer-count", (req, res) => {
+  const manufacturer = req.body.manufacturer;
+  const result = manufacturerCount(manufacturer);
+  res.json({ result });
 });
 
-//The output of the number of drugs that are Analgesics
-console.log(analgesicDrugs);
-console.log(" ");
+
+
+// 10. GET /drugs/count-analgesics
+
+// Count and return how many drugs have the category "Analgesic".
+
+//A forEach method is used to loop through the drugs array and count the number of drugs that are Analgesics.
+let analgesicDrugs = 0;
+
+drugs.forEach((drug) => {
+  if (drug.category === "Analgesic") {
+    analgesicDrugs++;
+  }
+});
+
+app.get("/drugs/count-analgesics", (req, res) => {
+  const result = analgesicDrugs;
+  res.json({ result });
+});

@@ -1,0 +1,46 @@
+{
+  "name": "nodejs-intro",
+  "version": "1.0.0",
+  "description": "My first interesting Node JS Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "build": "echo \"Building the project...\"",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "prettier": "prettier --write .",
+    "prettier:check": "prettier --check .",
+    "test:unit": "jest --testPathPattern=tests/unit",
+    "test:integration": "jest --testPathPattern=tests/integration",
+    "test:all": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
+    "test:debug:watch": "node --inspect-brk node_modules/.bin/jest --watch --runInBand",
+    "test:debug:coverage": "node --inspect-brk node_modules/.bin/jest --coverage --runInBand",
+    "test:debug:coverage:watch": "node --inspect-brk node_modules/.bin/jest --coverage --watch --runInBand",
+    "test:debug:coverage:watch:ci": "node --inspect-brk node_modules/.bin/jest --coverage --watchAll --runInBand",
+    "test:debug:coverage:watch:ci:ci": "node --inspect-brk node_modules/.bin/jest --coverage --watchAll --runInBand --ci",
+    "test:debug:coverage:watch:ci:ci:ci": "node --inspect-brk node_modules/.bin/jest --coverage --watchAll --runInBand --ci --ci"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OGTOSIN/CareerEx-Node-JS-Project.git"
+  },
+  "author": "Olúwatósìn Ògúntóyìnbó",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OGTOSIN/CareerEx-Node-JS-Project/issues"
+  },
+  "homepage": "https://github.com/OGTOSIN/CareerEx-Node-JS-Project#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
